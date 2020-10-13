@@ -214,6 +214,7 @@ func (r *Resource) computeCreateClusterStatusConditions(ctx context.Context, cl 
 
 		r.logger.LogCtx(ctx, "level", "debug", "volmessage", fmt.Sprintf("isCreating: %t | notCreated: %t | sameMasterCount: %t | sameWorkerCount: %t | sameVersion: %t", isCreating, notCreated, sameMasterCount, sameWorkerCount, sameVersion))
 		r.logger.LogCtx(ctx, "level", "debug", "volmessage", fmt.Sprintf("Ready master replicast: %d | desiredMasterReplicas: %d | readyWorkerReplicas: %d | desiredWorkerReplicas: %d", readyMasterReplicas, desiredMasterReplicas, readyWorkerReplicas, desiredWorkerReplicas))
+		r.logger.LogCtx(ctx, "level", "debug", "volmessage", fmt.Sprintf("Number of nodes: %d | desired version: %s | operator label: %s", len(nodes), desiredVersion, providerOperatorVersionLabel))
 
 		if isCreating && notCreated && sameMasterCount && sameWorkerCount && sameVersion {
 			status.Conditions = status.WithCreatedCondition()
