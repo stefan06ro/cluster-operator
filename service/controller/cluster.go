@@ -1,6 +1,8 @@
 package controller
 
 import (
+	"fmt"
+
 	infrastructurev1alpha2 "github.com/giantswarm/apiextensions/v2/pkg/apis/infrastructure/v1alpha2"
 	"github.com/giantswarm/certs/v3/pkg/certs"
 	"github.com/giantswarm/k8sclient/v4/pkg/k8sclient"
@@ -135,6 +137,8 @@ func newClusterResources(config ClusterConfig) ([]resource.Interface, error) {
 			return nil, microerror.Mask(err)
 		}
 	}
+
+	fmt.Printf("voldebug: base domain: %s | config tenant: %v", config.BaseDomain, config.Tenant)
 
 	var tenantClient tenantclient.Interface
 	{
