@@ -78,12 +78,16 @@ func (c *TenantClient) K8sClient(ctx context.Context, obj interface{}) (k8sclien
 		}
 	}
 
+	fmt.Println("voldebug Before k8sclient")
+
 	var k8sClient k8sclient.Interface
 	{
 		c := k8sclient.ClientsConfig{
 			Logger:     c.logger,
 			RestConfig: rest.CopyConfig(restConfig),
 		}
+
+		fmt.Println("voldebug before k8sclient from rest")
 
 		k8sClient, err = k8sclient.NewClients(c)
 		if tenant.IsAPINotAvailable(err) {
