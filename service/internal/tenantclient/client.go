@@ -2,6 +2,7 @@ package tenantclient
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/giantswarm/errors/tenant"
 	"github.com/giantswarm/k8sclient/v4/pkg/k8sclient"
@@ -63,6 +64,8 @@ func (c *TenantClient) K8sClient(ctx context.Context, obj interface{}) (k8sclien
 	if err != nil {
 		return nil, microerror.Mask(err)
 	}
+
+	fmt.Printf("voldebug | basedomain %s | apiendpoints: %s", bd, key.APIEndpoint(cr, bd))
 
 	var restConfig *rest.Config
 	{
