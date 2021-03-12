@@ -6,7 +6,7 @@ var (
 	gitSHA        = "n/a"
 	name          = "cluster-operator"
 	source        = "https://github.com/giantswarm/cluster-operator"
-	version       = "0.26.0"
+	version       = "0.26.0-cnfix"
 )
 
 func BundleVersion() string {

@@ -286,9 +286,10 @@ func newEtcdCertConfig(clusterConfig cluster.Config, cert certs.Cert, namespace 
 		Spec: v1alpha1.CertConfigSpec{
 			Cert: v1alpha1.CertConfigSpecCert{
 				AllowBareDomains:    true,
+				AltNames:            []string{clusterConfig.Domain.Etcd, "etcd"},
 				ClusterComponent:    certName,
 				ClusterID:           clusterConfig.ClusterID,
-				CommonName:          clusterConfig.Domain.Etcd,
+				CommonName:          "etcd",
 				DisableRegeneration: false,
 				IPSANs:              []string{loopbackIP},
 				TTL:                 clusterConfig.CertTTL,
