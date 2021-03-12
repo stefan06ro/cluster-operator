@@ -289,7 +289,7 @@ func newEtcdCertConfig(clusterConfig cluster.Config, cert certs.Cert, namespace 
 				AltNames:            []string{clusterConfig.Domain.Etcd, "etcd"},
 				ClusterComponent:    certName,
 				ClusterID:           clusterConfig.ClusterID,
-				CommonName:          "etcd",
+				CommonName:          clusterConfig.Domain.Etcd,
 				DisableRegeneration: false,
 				IPSANs:              []string{loopbackIP},
 				TTL:                 clusterConfig.CertTTL,
